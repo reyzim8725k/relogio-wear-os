@@ -1,20 +1,17 @@
-# Relógio Wear OS
+# Chronos Relógio Premium para Wear OS
 
-Relógio digital simples para Wear OS, em Java, sem dependências externas.
+Aplicativo Wear OS reconstruído do zero em Kotlin e Jetpack Compose for Wear OS. O design AMOLED usa preto profundo, acento champanhe/dourado, navegação por lista com suporte à coroa/rotary input, feedback háptico e modo ambient de baixo brilho.
 
-## Compilar (debug)
+## Catálogo
 
-Requisitos: JDK 17, Android SDK (platform 34, build-tools 34), Gradle 8.7+.
+O menu contém 49 telas independentes: oito faces de relógio; cronômetro, temporizadores, pomodoro, alarmes, respiração e meditação; calendário e feriados do Brasil; calculadoras, conversores, dados, senha, lanterna, bússola e nível; passos, água, humor, batimentos e hidratação; notas, tarefas, metrônomo, cozinha, bateria, dispositivo e configurações.
 
-```bash
-gradle wrapper --gradle-version 8.7   # gera o gradlew, se necessário
-./gradlew :app:assembleDebug
-```
+## Build
 
-O APK sai em `app/build/outputs/apk/debug/app-debug.apk`.
+- Kotlin 1.9.24 / Android Gradle Plugin 8.5.2
+- Compose for Wear OS 1.4.0
+- JDK 17, Android SDK 34, minSdk 30
+- `./gradlew :app:assembleDebug`
+- `./gradlew :app:assembleRelease`
 
-## Estrutura
-
-- `app/src/main/java/com/exemplo/relogio/MainActivity.java`: lógica do relógio (atualiza a cada segundo).
-- `app/src/main/res/layout/activity_main.xml`: layout com hora, segundos e data.
-- `app/src/main/AndroidManifest.xml`: manifesto com suporte a Wear OS.
+Os dados simples de uso são persistidos em SharedPreferences. Sensores têm fallback seguro; permissões de corpo e atividade estão declaradas no manifesto para solicitação pelo sistema quando aplicável.
